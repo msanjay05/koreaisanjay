@@ -125,7 +125,7 @@ router.delete("/delete/:id",checkAuth, async (req, res) => {
     if (!order) {
       return res.status(400).send({ error: "Id not found" });
     }
-    if(currentStatus[order.currentStatus]>=2){
+    if(currentStatus[order.currentStatus]>=3){
       throw ({ error: `Order can't be deleted, already ${order.currentStatus}` });
       
     }
