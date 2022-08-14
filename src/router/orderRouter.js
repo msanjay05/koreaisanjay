@@ -14,7 +14,7 @@ const router = new express.Router();
 const updateMilkQuantity=async function(quantity,date){
   try {
     const milk=await Milk.findOne({createdAt : { $lte : date} });
-    if(helper.matchDate(milk.createdAt,date)){
+    if(milk==null||helper.matchDate(milk.createdAt,date)){
       throw({'error':`No Milk found at this date ${date}`})
     }
     if(milk.quantityRemaining>=quantity){
